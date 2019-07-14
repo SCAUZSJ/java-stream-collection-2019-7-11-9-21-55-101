@@ -30,7 +30,18 @@ public class MyMap {
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+        return this.array.stream().map((val)->{
+            String result = "";
+            int multiple =val/26;
+            int remainder =val%26;
+            if(remainder ==0){
+                remainder=26;
+                multiple--;
+            }
+            result+=multiple<1?"":String.valueOf((char)('a'+multiple-1));
+            result+=String.valueOf((char)('a'+remainder-1));
+            return result;
+        }).collect(Collectors.toList());
     }
 
     public List<Integer> sortFromBig() {
